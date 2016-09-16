@@ -1,4 +1,5 @@
 CREATE DATABASE ProjectLemon
+
 USE ProjectLemon
 
 CREATE TABLE Users
@@ -21,7 +22,15 @@ CREATE TABLE Location
 	startAddress VARCHAR(MAX) NOT NULL,
 	startLocation VARCHAR(MAX) NOT NULL,
 	endAddress VARCHAR(MAX) NOT NULL,
-	endLocation VARCHAR(MAX) NOT NULL
+	endLocation VARCHAR(MAX) NOT NULL,
+	tripTime TIME NOT NULL
+)
+
+CREATE TABLE friendRelation 
+(
+	idUser INT NOT NULL,
+	idFriend INT NOT NULL,
+	tripsTogether INT
 )
 
 CREATE PROCEDURE addUser 
@@ -31,5 +40,23 @@ AS
 	BEGIN
 		INSERT INTO Users (firstName, secondName, firstLastName, secondLastName, email, [password], cellphoneNumber, DOB)
 		VALUES(@firstName, @secondName, @firstLastName, @secondLastName, @email, HASHBYTES('SHA2_512', @password), @cellPhoneNumber, @DOB)
+	END
+GO
+
+CREATE PROCEDURE addLocation
+@idUser INT, @startAddress VARCHAR(MAX), @startLocation VARCHAR(MAX), @endAddress VARCHAR(MAX), @endLocation VARCHAR(MAX), @tripTime TIME
+AS
+	BEGIN
+		INSERT INTO Location (idUser, startAddress, startLocation, endAddress, endLocation, tripTime)
+		VALUES (@idUser, @startAddress, @startLocation, @endAddress, @endLocation, @tripTime)
+	END
+GO
+
+CREATE PROCEDURE addFriendRelation
+@idUser INT, @idFriend INT, @tripsTogether INT
+AS
+	BEGIN
+		INSERT INTO friendRelation (idUser, idFriend, tripsTogether)
+		VALUES (@idUser, @idFriend, @tripsTogether)
 	END
 GO
