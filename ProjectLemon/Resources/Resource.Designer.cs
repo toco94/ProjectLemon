@@ -340,6 +340,18 @@ namespace ProjectLemon
 			// aapt resource value: 0x7f07000a
 			public const int auto = 2131165194;
 			
+			// aapt resource value: 0x7f07000f
+			public const int btnHybrid = 2131165199;
+			
+			// aapt resource value: 0x7f07000e
+			public const int btnNormal = 2131165198;
+			
+			// aapt resource value: 0x7f070010
+			public const int btnSatellite = 2131165200;
+			
+			// aapt resource value: 0x7f070011
+			public const int btnTerrain = 2131165201;
+			
 			// aapt resource value: 0x7f07000b
 			public const int dark = 2131165195;
 			
